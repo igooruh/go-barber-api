@@ -1,0 +1,8 @@
+{
+    "type": "postgres",
+    "host": "198.168.99.100",
+    "port": 5432,
+    "username": "postgres",
+    "password": "dockernode",
+    "database": "postgres"
+}
