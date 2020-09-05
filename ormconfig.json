@@ -1,8 +1,14 @@
 {
     "type": "postgres",
-    "host": "198.168.99.100",
+    "host": "192.168.99.105",
     "port": 5432,
     "username": "postgres",
-    "password": "dockernode",
-    "database": "postgres"
+    "password": "gobarber",
+    "database": "gobarber",
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/database/migrations"
+    }
 }
