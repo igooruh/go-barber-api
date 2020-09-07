@@ -5,12 +5,12 @@ import AppointmentModel from '../models/Appointment';
 import AppointmentRepository from '../repositories/AppointmentRepository';
 
 interface RequestAppointment {
-    provider: string;
+    provider_id: string;
     date: Date;
 }
 
 class CreateAppointmentService {
-    public async execute({ provider, date }: RequestAppointment): Promise<AppointmentModel> {
+    public async execute({ provider_id, date }: RequestAppointment): Promise<AppointmentModel> {
         const appointmentsRepository = getCustomRepository(AppointmentRepository);
 
         const appointmentDate = startOfHour(date);
@@ -22,7 +22,7 @@ class CreateAppointmentService {
         }
 
         const objAppointment = appointmentsRepository.create({
-            provider,
+            provider_id,
             date: appointmentDate
         });
 
