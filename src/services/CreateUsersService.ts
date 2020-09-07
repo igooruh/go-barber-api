@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { hash } from 'bcrypt';
+import { hash } from 'bcryptjs';
 
 import User from '../models/UserModel';
 
