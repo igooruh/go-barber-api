@@ -6,7 +6,7 @@ import User from '../models/UserModel';
 interface RequestUser {
     name: string;
     email: string;
-    password: string; 
+    password: string;
 }
 
 class CreateUserService {
