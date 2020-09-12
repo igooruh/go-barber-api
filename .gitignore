@@ -5,3 +5,11 @@ node_modules
 
 # Files
 yarn.lock
+
+
+.idea/
+.vscode/
+temp/
+
+tmp/*
+!tmp/.gitkeep
