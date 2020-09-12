@@ -11,7 +11,7 @@ interface RequestAuthenticateUser {
 }
 
 interface ResponseAuthenticateUser {
-    user: User,
+    userSession: User,
     token: string
 }
 
@@ -19,13 +19,13 @@ class AuthenticateUserService {
     public async execute({ email, password }: RequestAuthenticateUser): Promise<ResponseAuthenticateUser> {
         const userRepository = getRepository(User);
 
-        const user = await userRepository.findOne({ where: { email } });
+        const userSession = await userRepository.findOne({ where: { email } });
 
-        if(!user) {
+        if(!userSession) {
             throw new Error('Incorrect email/password combination');
         }
 
-        const passwordMatched = await compare(password, user.password);
+        const passwordMatched = await compare(password, userSession.password);
 
         if(!passwordMatched) {
             throw new Error('Incorrect email/password combination');
@@ -34,12 +34,12 @@ class AuthenticateUserService {
         const { secret, expiresIn } = authConfig.jwt;
 
         const token = sign({}, secret, {
-            subject: user.id,
+            subject: userSession.id,
             expiresIn
         });
 
         return {
-            user,
+            userSession,
             token
         }
     }
